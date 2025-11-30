@@ -1,65 +1,158 @@
-# TRIW: 3-İşaretli 1D Aritmetik Sistemi
+TRIW: 3-İşaretli 1D Aritmetik Protokolü
 
-Bu belge, standart aritmetikteki 2 durumlu işaret kavramını ($+/-$), 1 Boyutlu uzayda 3 durumlu bir yapıya ($W1/W2/W3$) dönüştüren TRIW sisteminin teknik tanımını ve aksiyomlarını içerir.
+TRIW, skaler büyüklüklerin işaret bilgisini geleneksel ikili ($+/-$) sistem yerine, üçlü ($W1/W2/W3$) durum mantığıyla yöneten deneysel bir aritmetik sistemdir.
 
-## 1. Sistemin Tanımı
+📁 Sistem Özellikleri
 
-TRIW, skaler bir büyüklüğün önündeki nitelik (işaret) bilgisinin, geleneksel ikili mantık yerine üçlü bir mantık kümesiyle yönetildiği bir aritmetik sistemdir.
+Tip: 1 Boyutlu (1D) Aritmetik
 
-Sistem 1 Boyutludur (1D). Sayılar tek bir eksen üzerinde tanımlıdır ancak bu eksen üzerindeki değerler üç farklı "durum"dan (State) birine sahip olabilir.
-Hayal etmeye çalışmayın çünkü bizim evrernimizde doğrular 2 yönlü, 3 değil. bu sistem Öklidyen geometrden çok farklı ve bir o kadar benzer ilginç bir yapıya sahiptir.
-## 2. Standart Sistem ile Yapısal Farklar
+Geometri: Öklidyen Olmayan (Non-Euclidean)
 
-Her iki sistem de cebirsel olarak kapalı (closed) birer gruptur. Fark, grubun eleman sayısı ve etkileşim kurallarıdır.
+Mantık: Üçlü Durum (Ternary State)
 
-| Özellik | Standart İkili Sistem | TRIW Üçlü Sistemi |
-| :--- | :--- | :--- |
-| **İşaret Kümesi** | $\{+, -\}$ (2 Eleman) | $\{W1, W2, W3\}$ (3 Eleman) |
-| **Birim Eleman** | $+$ (Pozitif) | $W1$ |
-| **Operatör Periyodu** | 2. Dereceden (Order 2)<br>$(-) \times (-) = (+)$ | 3. Dereceden (Order 3)<br>$W2 \times W2 = W3$ |
-| **Ters İşlem** | Kendisiyle çarpım birim elemanı verir.<br>$x = x^{-1}$ ($-1$ için) | Kendisiyle çarpım *diğer* elemanı verir.<br>$x \neq x^{-1}$ (W2 ve W3 için) |
+Negatiflik: Tanımsız (Yok)
 
-## 3. Aksiyomlar
+⚙️ Temel Tanımlar
 
-ikili sistemde +(hareketsiz) ve -(hareketli) iki yön vardır bizde W2,W3 (hareketli) ve W1 (hareketsiz) üç yön vardır
-ikili sistemde - nin sönümleyicisi - dir ($(-) \times (-) = (+)$)
+Sayılar geometrik yönler değil, "Durumlar" (States) olarak tanımlanır.
 
-üçlü sistemde ise W2 nin sönümleyicisi W3 ve tam tersi W2*W3 = W1
+Durum Kodu
 
-ve burda da $A \times B = B \times A$ dır
+Tanım
 
-### Aksiyom 1: Birim Eleman (W1)
-W1, sistemin etkisiz elemanıdır. Sayısal değeri veya işareti değiştirmez.
-* $X \cdot W1 = X$
+Rol
 
-### Aksiyom 2: Asimetrik Karesel Dönüşüm
-Standart sistemde birim olmayan elemanın karesi birim elemanı verir ($-\cdot - = +$).
-TRIW sisteminde, birim olmayan bir elemanın karesi, birim elemanı **vermez**; üçüncü durumu (tamamlayıcıyı) oluşturur.
+W1
 
-* $W2 \cdot W2 = W3$
-* $W3 \cdot W3 = W2$ *(Matematiksel not: $W3$, $W2$'nin karesi gibi davranırsa, $W3$'ün karesi $W2^4$ olur, bu da $W2$'ye denktir)*
+Hareketsiz
 
-### Aksiyom 3: Tamamlayıcılık (Ters Eleman)
-Sistemin birim elemana (W1) dönebilmesi için iki "aynı" işaretin değil, iki "tamamlayıcı" işaretin çarpılması gerekir.
+Birim / Etkisiz Eleman
 
-* $W2 \cdot W3 = W1$
+W2
 
-## 4. Etkileşim Tablosu (Interaction Table)
+Hareketli
 
-Bu evrendeki işaretlerin çarpım kuralı aşağıdaki gibidir:
+Aktif Durum A
 
-| $\times$ | **W1** | **W2** | **W3** |
-| :---: | :---: | :---: | :---: |
-| **W1** | W1 | W2 | W3 |
-| **W2** | W2 | **W3** | **W1** |
-| **W3** | W3 | **W1** | **W2** |
+W3
 
-## 5. Neden Öklüdyen Değil?
+Hareketli
 
-Öklid geometrisi ve standart reel sayılar ekseni, büyüklüklerin yönelimini 180 derecelik zıtlıklar (tersinirlik) üzerine kurar. TRIW sisteminde ise "zıtlık" (negation) kavramı yoktur. Bunun yerine 3 parçalı bir durum uzayı vardır.
+Aktif Durum B (Tamamlayıcı)
 
-Bu sistemde:
-* **$-1$ yoktur.** (Bir sayıyı negatifiyle çarparak pozitif yapamazsınız).
-* **Bölme işlemi ($1/x$):** Bir sayıyı bölmek, onu sistemdeki "tamamlayıcı" işaretiyle çarpmak demektir. ($W2$'ye bölmek, $W3$ ile çarpmaktır).
+🧮 Operatör Mantığı (V-Sistemi)
 
-Bu yapı, sayı doğrusunun kurallarını değiştiren, kendi içinde tutarlı, alternatif bir 1D aritmetiktir.
+Sistemde standart + ve - yoktur. İşlemler V1, V2, V3 operatörleri ile yürütülür.
+
+1. V1 Operatörü (Base Merge)
+
+Temel birleştirme işlemidir.
+
+Kural 1 (Aynı): $Wn \ V1 \ Wn = 2Wn$
+
+Kural 2 (Farklı): $Wn \ V1 \ Wm = 0$ (Sönümleme)
+
+Kural 3 (Değişme): $A \ V1 \ B = B \ V1 \ A$
+
+2. Dönüşüm Operatörleri (V2, V3)
+
+İşlem operatörü ($Vy$), ikinci terimin durumunu ($Wz$) çarpanlarına ayırarak değiştirir. İşlem V1 tabanına indirgenir.
+
+Genel Formül:
+
+aWx \ Vy \ bWz \implies aWx \ V1 \ b(Wz \cdot Wy)
+
+
+🔄 Çekirdek Etkileşim (Kernel Interaction)
+
+Bu evrende işaretlerin çarpım/etkileşim kuralları 3. dereceden bir döngüye sahiptir.
+
+Çarpım Tablosu
+
+x
+
+W1
+
+W2
+
+W3
+
+W1
+
+W1
+
+W2
+
+W3
+
+W2
+
+W2
+
+W3
+
+W1
+
+W3
+
+W3
+
+W1
+
+W2
+
+Kritik Aksiyomlar
+
+Birim: $X \cdot W1 = X$
+
+Karesel Dönüşüm: Birim olmayan elemanın karesi, diğer elemanı verir.
+
+$W2 \cdot W2 = W3$
+
+$W3 \cdot W3 = W2$
+
+Tamamlayıcılık: Birim elemana ($W1$) dönmek için zıtlık değil, tamamlayıcılık gerekir.
+
+$W2 \cdot W3 = W1$
+
+⚖️ Standart Sistem (Binary) vs TRIW
+
+Özellik
+
+Standart (Binary)
+
+TRIW (Ternary)
+
+Set
+
+$\{+, -\}$
+
+$\{W1, W2, W3\}$
+
+Döngü
+
+2. Dereceden ($-\cdot - = +$)
+
+3. Dereceden ($W2 \cdot W2 = W3$)
+
+Tersinirlik
+
+Kendisiyle çarpım birimi verir.
+
+Tamamlayıcısı ile çarpım birimi verir.
+
+Bölme
+
+Ters işaret ile çarpım.
+
+Tamamlayıcı işaret ile çarpım.
+
+📝 Kullanım Notları
+
+Bu sistemde $-1$ (negatif bir) yoktur.
+
+Bölme işlemi ($1/x$), sayıyı sistemdeki "tamamlayıcı" işaretiyle çarpmak demektir.
+
+Örnek: $W2$'ye bölmek $\equiv W3$ ile çarpmaktır.
+
+Sistem kapalı bir gruptur (Closed Group).
