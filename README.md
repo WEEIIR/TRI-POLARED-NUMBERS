@@ -6,7 +6,7 @@ Bu belge, standart ikili (pozitif/negatif) sayı sistemi yerine, **tek boyut (1D
 
 Geleneksel matematikte sayılar bir doğru üzerinde $0$ noktasına göre simetrik iki yöne (Sağ/Sol veya +/-) sahiptir. Bu sistemde "tersin tersi kendisidir" ($- \times - = +$) kuralı geçerlidir. Bu, **antagonistik (karşıtlık temelli)** bir evren modelidir.
 
-**TRIW Sistemi** ise 1 Boyutlu uzayda **tek karşıtlığı reddeder**. Bunun yerine **çok yönlü karşıtlar** esas alır. Bir yöne gitmekte olan bir varlık, tersine dönmek için durup geri gitmez; döngüyü tamamlayarak başa döner.
+**TRIW Sistemi** ise 1 Boyutlu uzayda **tek karşıtlığı reddeder**. Bunun yerine **çok yönlü karşıtlar** esas alır.
 
 ### Temel Tanım
 Sistem hala **1 Boyutludur (1D)**. Ancak bu boyut üzerindeki hareket, skaler bir büyüklüğün yanında, W1, W2 ve W3 olarak adlandırılan üç farklı "faz" veya "yönelim" ile ifade edilir.
