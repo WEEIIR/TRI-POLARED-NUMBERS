@@ -1,67 +1,65 @@
-# TRI-POLARED-NUMBERS
+# TRIW: 3-İşaretli 1D Aritmetik Sistemi
 
-Bu belge, standart ikili (pozitif/negatif) sayı sistemi yerine, **tek boyut (1D) üzerinde üç farklı yönün** tanımlandığı, Öklid dışı (Non-Euclidean) bir aritmetik sistem olan TRIW'in mantığını, aksiyomlarını ve çalışma prensiplerini açıklar.
+Bu belge, standart aritmetikteki 2 durumlu işaret kavramını ($+/-$), 1 Boyutlu uzayda 3 durumlu bir yapıya ($W1/W2/W3$) dönüştüren TRIW sisteminin teknik tanımını ve aksiyomlarını içerir.
 
-## 1. Sistemin Amacı ve Felsefesi
+## 1. Sistemin Tanımı
 
-Geleneksel matematikte sayılar bir doğru üzerinde $0$ noktasına göre simetrik iki yöne (Sağ/Sol veya +/-) sahiptir. Bu sistemde "tersin tersi kendisidir" ($- \times - = +$) kuralı geçerlidir. Bu, **antagonistik (karşıtlık temelli)** bir evren modelidir.
+TRIW, skaler bir büyüklüğün önündeki nitelik (işaret) bilgisinin, geleneksel ikili mantık yerine üçlü bir mantık kümesiyle yönetildiği bir aritmetik sistemdir.
 
-**TRIW Sistemi** ise 1 Boyutlu uzayda **tek karşıtlığı reddeder**. Bunun yerine **çok yönlü karşıtlar** esas alır.
+Sistem 1 Boyutludur (1D). Sayılar tek bir eksen üzerinde tanımlıdır ancak bu eksen üzerindeki değerler üç farklı "durum"dan (State) birine sahip olabilir.
+Hayal etmeye çalışmayın çünkü bizim evrernimizde doğrular 2 yönlü, 3 değil. bu sistem Öklidyen geometrden çok farklı ve bir o kadar benzer ilginç bir yapıya sahiptir.
+## 2. Standart Sistem ile Yapısal Farklar
 
-### Temel Tanım
-Sistem hala **1 Boyutludur (1D)**. Ancak bu boyut üzerindeki hareket, skaler bir büyüklüğün yanında, W1, W2 ve W3 olarak adlandırılan üç farklı "faz" veya "yönelim" ile ifade edilir.
+Her iki sistem de cebirsel olarak kapalı (closed) birer gruptur. Fark, grubun eleman sayısı ve etkileşim kurallarıdır.
 
-## 2. Standart "Eksi" Sisteminden Farkları
-
-| Özellik | Standart Sistem (+/-) | TRIW Sistemi (W1/W2/W3) |
+| Özellik | Standart İkili Sistem | TRIW Üçlü Sistemi |
 | :--- | :--- | :--- |
-| **Boyut Yapısı** | 1D (Doğrusal / Zıt) | 1D (Döngüsel / Fazlı) |
-| **Yön Sayısı** | 2 (Pozitif, Negatif) | 3 (W1, W2, W3) |
-| **Tersin Tersi** | Kendisidir ($-- \to +$) | Başka bir yöndür ($W2 \cdot W2 \to W3$) |
-| **Birim Eleman** | +1 | W1 |
-| **Denge Noktası** | 0 (Toplamsal Yutan) | W1 (Çarpımsal Birim / Referans) |
-| **Geometri** | Vektörel (180° zıtlık) | Öklid Dışı (Açısal olmayan yönelim) |
+| **İşaret Kümesi** | $\{+, -\}$ (2 Eleman) | $\{W1, W2, W3\}$ (3 Eleman) |
+| **Birim Eleman** | $+$ (Pozitif) | $W1$ |
+| **Operatör Periyodu** | 2. Dereceden (Order 2)<br>$(-) \times (-) = (+)$ | 3. Dereceden (Order 3)<br>$W2 \times W2 = W3$ |
+| **Ters İşlem** | Kendisiyle çarpım birim elemanı verir.<br>$x = x^{-1}$ ($-1$ için) | Kendisiyle çarpım *diğer* elemanı verir.<br>$x \neq x^{-1}$ (W2 ve W3 için) |
 
-## 3. Aksiyomlar ve Kurallar
+## 3. Aksiyomlar
 
-Bu sistemin kuralları, "hiçbir yönün diğerinin tam zıttı olmadığı, sadece bir sonraki aşaması olduğu" prensibine göre türetilmiştir.
+ikili sistemde +(hareketsiz) ve -(hareketli) iki yön vardır bizde W2,W3 (hareketli) ve W1 (hareketsiz) üç yön vardır
+ikili sistemde - nin sönümleyicisi - dir ($(-) \times (-) = (+)$)
 
-### Aksiyom 1: Referans Yönü (W1)
-W1, sistemin "doğal" halidir. Standart matematikteki Pozitif (+) yüke veya Birim (Identity) elemana karşılık gelir.
-* `Herhangi bir yön` * `W1` = `Kendisi`
+üçlü sistemde ise W2 nin sönümleyicisi W3 ve tam tersi W2*W3 = W1
 
-### Aksiyom 2: İlerleme İlkesi (Self-Interaction)
-Standart matematikte bir eksiyi kendisiyle çarparsanız artıya (başa) dönersiniz. TRIW evreninde ise bir yön (W2) kendisiyle etkileşime girdiğinde başa dönmez, bir sonraki faza (W3) geçer.
-* **W2 * W2 = W3** (Kendisiyle çarpım, sistemi ileriye taşır.)
-* **W3 * W3 = W2** (W3'ün karesi, döngüsel olarak W2'ye düşer.)
+ve burda da $A \times B = B \times A$ dır
 
-### Aksiyom 3: Tamamlama İlkesi (Mutual-Interaction)
-Sistemin başa (W1 - Referans haline) dönebilmesi için, iki farklı sapma yönünün (W2 ve W3) birleşmesi gerekir.
-* **W2 * W3 = W1** (İki farklı yön birleştiğinde denge sağlanır.)
+### Aksiyom 1: Birim Eleman (W1)
+W1, sistemin etkisiz elemanıdır. Sayısal değeri veya işareti değiştirmez.
+* $X \cdot W1 = X$
 
-## 4. Bu Evrenin Geometrisi (Öklid Dışı 1D)
+### Aksiyom 2: Asimetrik Karesel Dönüşüm
+Standart sistemde birim olmayan elemanın karesi birim elemanı verir ($-\cdot - = +$).
+TRIW sisteminde, birim olmayan bir elemanın karesi, birim elemanı **vermez**; üçüncü durumu (tamamlayıcıyı) oluşturur.
 
-Bu sistemde "açı" kavramı, bildiğimiz 2D düzlemdeki iletki açısı değildir. Buradaki açılar, sayı doğrusunun kendi içindeki bükülmeleridir.
+* $W2 \cdot W2 = W3$
+* $W3 \cdot W3 = W2$ *(Matematiksel not: $W3$, $W2$'nin karesi gibi davranırsa, $W3$'ün karesi $W2^4$ olur, bu da $W2$'ye denktir)*
 
-* **Neden 1D?** Veri tek bir hatta akar (bir kablo, bir zaman serisi). Ancak verinin "rengi" veya "tadı" değişir.
-* **Görselleştirme:** Bunu düz bir çizgi yerine, ucundan bakıldığında üç yapraklı bir yonca gibi görünen, ancak yan taraftan bakıldığında tek bir çizgi gibi duran bir yapı olarak düşünebilirsiniz.
-    * W1 hattı
-    * W2 hattı
-    * W3 hattı
+### Aksiyom 3: Tamamlayıcılık (Ters Eleman)
+Sistemin birim elemana (W1) dönebilmesi için iki "aynı" işaretin değil, iki "tamamlayıcı" işaretin çarpılması gerekir.
 
-Bu hatlar birbirine paralel değildir, birbirinin içindedir. Sayı doğrusu üzerinde "geri gitmek" yoktur, sadece yön değiştirmek (W1->W2->W3->W1) vardır.
+* $W2 \cdot W3 = W1$
 
-## 5. Hesaplama Mantığı (Çarpım Tablosu)
+## 4. Etkileşim Tablosu (Interaction Table)
 
-Sistemin "Truth Table" (Doğruluk Tablosu) şöyledir:
+Bu evrendeki işaretlerin çarpım kuralı aşağıdaki gibidir:
 
-| * | **W1** | **W2** | **W3** |
+| $\times$ | **W1** | **W2** | **W3** |
 | :---: | :---: | :---: | :---: |
 | **W1** | W1 | W2 | W3 |
 | **W2** | W2 | **W3** | **W1** |
 | **W3** | W3 | **W1** | **W2** |
 
-> **Not:** Bu tablo, Abelyen (değişmeli) bir gruptur. Sıralama sonucu değiştirmez (W2 * W3 = W3 * W2).
+## 5. Neden Öklüdyen Değil?
 
----
-*Bu sistem, `TRIFLOAT32` veri yapısı altında C++ ile simüle edilmiştir.*
+Öklid geometrisi ve standart reel sayılar ekseni, büyüklüklerin yönelimini 180 derecelik zıtlıklar (tersinirlik) üzerine kurar. TRIW sisteminde ise "zıtlık" (negation) kavramı yoktur. Bunun yerine 3 parçalı bir durum uzayı vardır.
+
+Bu sistemde:
+* **$-1$ yoktur.** (Bir sayıyı negatifiyle çarparak pozitif yapamazsınız).
+* **Bölme işlemi ($1/x$):** Bir sayıyı bölmek, onu sistemdeki "tamamlayıcı" işaretiyle çarpmak demektir. ($W2$'ye bölmek, $W3$ ile çarpmaktır).
+
+Bu yapı, sayı doğrusunun kurallarını değiştiren, kendi içinde tutarlı, alternatif bir 1D aritmetiktir.
